@@ -1,0 +1,32 @@
+{
+  "name": "react-plotlyjs",
+  "main": "lib/PlotlyComponent.js",
+  "version": "0.1.0",
+  "homepage": "https://github.com/benjeffery/react-plotlyjs",
+  "authors": [
+    "Ben Jeffery"
+  ],
+  "description": "ReactJS / PlotlyJS integration. Draw plotly graphs in your react app.",
+  "moduleType": [
+    "amd",
+    "globals",
+    "node"
+  ],
+  "keywords": [
+    "react",
+    "react-component",
+    "plotly",
+    "graph",
+    "plot"
+  ],
+  "license": "MIT",
+  "ignore": [
+    ".editorconfig",
+    ".gitignore",
+    "package.json",
+    "src",
+    "node_modules",
+    "example",
+    "test"
+  ]
+}

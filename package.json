@@ -1,0 +1,48 @@
+{
+  "name": "react-plotlyjs",
+  "version": "0.1.0",
+  "description": "ReactJS / PlotlyJS integration. Draw plotly graphs in your react app.",
+  "main": "lib/PlotlyComponent.js",
+  "author": "Ben Jeffery",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/benjeffery/react-plotlyjs.git"
+  },
+  "dependencies": {
+    "console": "^0.5.2",
+    "deep-equal": "^1.0.1",
+    "shallowequal": "^0.2.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.2.0",
+    "babel-preset-es2015": "^6.1.18",
+    "babel-preset-react": "^6.1.18",
+    "gulp": "^3.9.0",
+    "gulp-bump": "^1.0.0",
+    "gulp-git": "^1.5.0",
+    "gulp-util": "^3.0.6"
+  },
+  "peerDependencies": {
+    "react": "^0.14.0"
+  },
+  "browserify-shim": {
+    "react": "global:React"
+  },
+  "scripts": {
+    "prepublish": "npm run compile",
+    "compile": "babel --presets es2015,react -d lib/ src/",
+    "bump": "gulp bump",
+    "bump:minor": "gulp bump:minor",
+    "bump:major": "gulp bump:major",
+    "release": "gulp publish:tag && gulp publish:npm",
+    "test": "echo \"no tests yet\" && exit 0"
+  },
+  "keywords": [
+    "react",
+    "react-component",
+    "plotly",
+    "graph",
+    "plot"
+  ]
+}
