@@ -61,7 +61,7 @@ Here's a simple example render method:
       displayModeBar: true
     };
     return (
-      <Plotly data={data} layout={layout} config={config}/>
+      <Plotly className="whatever" data={data} layout={layout} config={config}/>
     );
   }
 ```

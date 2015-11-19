@@ -14,6 +14,7 @@ var PlotlyComponent = React.createClass({
 
   shouldComponentUpdate(nextProps) {
     //TODO logic for detecting change in props
+    return true;
   },
 
   componentDidMount() {
@@ -35,7 +36,8 @@ var PlotlyComponent = React.createClass({
   },
 
   render: function () {
-    return React.DOM.div({'ref': (node) => this.container=node}, null);
+    let {data, layout, config, ...other } = this.props;
+    return <div {...other} ref={(node) => this.container=node} />
   }
 });
 
