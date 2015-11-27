@@ -1,5 +1,5 @@
 const React = require('react');
-const console = require('console');
+var Plotly = require('plotly.js/dist/plotly.js');
 const shallowEqual = require('shallowequal');
 const deepEqual = require('deep-equal');
 
@@ -19,11 +19,6 @@ var PlotlyComponent = React.createClass({
 
   componentDidMount() {
     let {data, layout, config} = this.props;
-
-    if (!window.Plotly) {
-      console.error('Sorry you have to include a script tag like it is 1998. Hopefully Plotly will support webpack soon.  <script type="text/javascript" src="https://cdn.plot.ly/plotly-latest.min.js"></script>');
-      return;
-    }
     Plotly.plot(this.container, data, layout, config);
   },
 

@@ -12,6 +12,7 @@
   "dependencies": {
     "console": "^0.5.2",
     "deep-equal": "^1.0.1",
+    "plotly.js": "^1.1.0",
     "shallowequal": "^0.2.2"
   },
   "devDependencies": {
