@@ -1,5 +1,5 @@
 const React = require('react');
-var Plotly = require('plotly.js/dist/plotly.js');
+var Plotly = require('plotly.js');
 const shallowEqual = require('shallowequal');
 const deepEqual = require('deep-equal');
 
