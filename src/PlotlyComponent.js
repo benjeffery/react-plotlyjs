@@ -1,7 +1,5 @@
 const React = require('react');
 var Plotly = require('plotly.js');
-const shallowEqual = require('shallowequal');
-const deepEqual = require('deep-equal');
 
 var PlotlyComponent = React.createClass({
 
