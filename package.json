@@ -12,18 +12,18 @@
   "dependencies": {
     "console": "^0.5.2",
     "deep-equal": "^1.0.1",
-    "plotly.js": "^1.1.0",
-    "shallowequal": "^0.2.2"
+    "shallowequal": "^0.2.2",
+    "plotly.js": "^1.5.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.2.0",
-    "babel-preset-es2015": "^6.1.18",
-    "babel-preset-react": "^6.1.18",
-    "babel-preset-stage-1": "^6.1.18",
+    "babel-cli": "^6.4.5",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
+    "babel-preset-stage-1": "^6.3.13",
     "gulp": "^3.9.0",
     "gulp-bump": "^1.0.0",
-    "gulp-git": "^1.5.0",
-    "gulp-util": "^3.0.6"
+    "gulp-git": "^1.6.1",
+    "gulp-util": "^3.0.7"
   },
   "peerDependencies": {
     "react": "^0.14.0"
