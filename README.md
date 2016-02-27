@@ -7,9 +7,8 @@ A react component for Plotly.JS graphs.
 This is a very early, simple wrapper with the following problems:
 
 * Performs a full redraw on every update, I intend to make this more performant soon. 
-* Changes to the 'config' prop will not update the graph currently. 
-* No event handling
-
+* Changes to the 'config' prop will not update the graph currently.
+* Performs event handling: onClick, onBeforeHover, onHover, onUnHover, onSelected
 
 ```javascript
 const Plotly = require('react-plotlyjs');
