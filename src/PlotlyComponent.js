@@ -1,5 +1,5 @@
-const React = require('react');
-var Plotly = require('plotly.js');
+import React  from 'react';
+import Plotly from 'plotly.js';
 
 var PlotlyComponent = React.createClass({
 
