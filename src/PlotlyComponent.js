@@ -45,7 +45,9 @@ var PlotlyComponent = React.createClass({
   componentWillUnmount: function() {
     //Remove some cruft left behind by plotly
     var cruft = document.getElementById("js-plotly-tester");
-    cruft.parentNode.removeChild(cruft);
+    if (cruft !== null) {
+      cruft.parentNode.removeChild(cruft);
+    }
 
     this.container.removeAllListeners('plotly_click');
     this.container.removeAllListeners('plotly_beforehover');
