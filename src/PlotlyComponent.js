@@ -56,6 +56,10 @@ var PlotlyComponent = React.createClass({
     this.container.removeAllListeners('plotly_selected');
   },
 
+  resize: function() {
+    Plotly.Plots.plot(this.container);
+  },
+
   render: function () {
     let {data, layout, config, ...other } = this.props;
     return <div {...other} ref={(node) => this.container=node} />
