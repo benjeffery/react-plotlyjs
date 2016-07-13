@@ -57,7 +57,7 @@ var PlotlyComponent = React.createClass({
   },
 
   resize: function() {
-    Plotly.Plots.plot(this.container);
+    Plotly.Plots.resize(this.container);
   },
 
   render: function () {
