@@ -44,17 +44,7 @@ var PlotlyComponent = React.createClass({
   },
 
   componentWillUnmount: function() {
-    //Remove some cruft left behind by plotly
-    var cruft = document.getElementById("js-plotly-tester");
-    if (cruft !== null) {
-      cruft.parentNode.removeChild(cruft);
-    }
-
-    this.container.removeAllListeners('plotly_click');
-    this.container.removeAllListeners('plotly_beforehover');
-    this.container.removeAllListeners('plotly_hover');
-    this.container.removeAllListeners('plotly_unhover');
-    this.container.removeAllListeners('plotly_selected');
+    Plotly.purge(this.container);
   },
 
   resize: function() {
