@@ -1,5 +1,6 @@
 import React  from 'react';
 import Plotly from 'plotly.js';
+import cloneDeep from 'lodash.clonedeep';
 
 var PlotlyComponent = React.createClass({
 
@@ -22,7 +23,7 @@ var PlotlyComponent = React.createClass({
 
   componentDidMount() {
     let {data, layout, config} = this.props;
-    Plotly.plot(this.container, data, layout, config);
+    Plotly.newPlot(this.container, data, cloneDeep(layout), config); //We clone the layout as plotly mutates it.
     if (this.props.onClick)
       this.container.on('plotly_click', this.props.onClick);
     if (this.props.onBeforeHover)
@@ -35,11 +36,11 @@ var PlotlyComponent = React.createClass({
       this.container.on('plotly_selected', this.props.onSelected);
   },
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
     //TODO use minimal update for given changes
-    this.container.data = this.props.data;
-    this.container.layout = this.props.layout;
-    Plotly.redraw(this.container);
+    if (prevProps.data !== this.props.data || prevProps.layout !== this.props.layout) {
+      Plotly.newPlot(this.container, this.props.data, this.props.layout);
+    }
   },
 
   componentWillUnmount: function() {
