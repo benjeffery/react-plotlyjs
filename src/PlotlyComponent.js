@@ -16,14 +16,7 @@ var PlotlyComponent = React.createClass({
     onSelected: React.PropTypes.func
   },
 
-  shouldComponentUpdate(nextProps) {
-    //TODO logic for detecting change in props
-    return true;
-  },
-
-  componentDidMount() {
-    let {data, layout, config} = this.props;
-    Plotly.newPlot(this.container, data, cloneDeep(layout), config); //We clone the layout as plotly mutates it.
+  attachListeners: function() {
     if (this.props.onClick)
       this.container.on('plotly_click', this.props.onClick);
     if (this.props.onBeforeHover)
@@ -36,10 +29,22 @@ var PlotlyComponent = React.createClass({
       this.container.on('plotly_selected', this.props.onSelected);
   },
 
+  shouldComponentUpdate(nextProps) {
+    //TODO logic for detecting change in props
+    return true;
+  },
+
+  componentDidMount() {
+    let {data, layout, config} = this.props;
+    Plotly.newPlot(this.container, data, cloneDeep(layout), config); //We clone the layout as plotly mutates it.
+    this.attachListeners();
+  },
+
   componentDidUpdate(prevProps) {
     //TODO use minimal update for given changes
     if (prevProps.data !== this.props.data || prevProps.layout !== this.props.layout) {
       Plotly.newPlot(this.container, this.props.data, this.props.layout);
+      this.attachListeners();
     }
   },
 
