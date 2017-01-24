@@ -1,9 +1,7 @@
 import React  from 'react';
-import Plotly from 'plotly.js';
 import cloneDeep from 'lodash.clonedeep';
 
-var PlotlyComponent = React.createClass({
-
+let createPlotlyComponent = (plotlyInstance) => React.createClass({
   displayName: 'Plotly',
   propTypes: {
     data: React.PropTypes.array,
@@ -36,24 +34,24 @@ var PlotlyComponent = React.createClass({
 
   componentDidMount() {
     let {data, layout, config} = this.props;
-    Plotly.newPlot(this.container, data, cloneDeep(layout), config); //We clone the layout as plotly mutates it.
+    plotlyInstance.newPlot(this.container, data, cloneDeep(layout), config); //We clone the layout as plotly mutates it.
     this.attachListeners();
   },
 
   componentDidUpdate(prevProps) {
     //TODO use minimal update for given changes
     if (prevProps.data !== this.props.data || prevProps.layout !== this.props.layout) {
-      Plotly.newPlot(this.container, this.props.data, this.props.layout);
+      plotlyInstance.newPlot(this.container, this.props.data, this.props.layout);
       this.attachListeners();
     }
   },
 
   componentWillUnmount: function() {
-    Plotly.purge(this.container);
+    plotlyInstance.purge(this.container);
   },
 
   resize: function() {
-    Plotly.Plots.resize(this.container);
+    plotlyInstance.Plots.resize(this.container);
   },
 
   render: function () {
@@ -69,4 +67,4 @@ var PlotlyComponent = React.createClass({
   }
 });
 
-module.exports = PlotlyComponent;
+export default createPlotlyComponent;
