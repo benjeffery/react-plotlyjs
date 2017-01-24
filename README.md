@@ -11,9 +11,14 @@ This is a very early, simple wrapper with the following problems:
 However it does support event handling via the onClick, onBeforeHover, onHover, onUnHover and onSelected props.
 Note that currently, however, changes to these event handlers after initial creation will not be propogated.
 
+As the full Plotly bundle is huge, this library lets you pass a custom bundle to create the component. Therefore you will need Plotly as a direct dependancy of your project.
+
 
 ```javascript
-const Plotly = require('react-plotlyjs');
+import createPlotlyComponent from 'react-plotlyjs';
+//See the list of possible plotly bundles at https://github.com/plotly/plotly.js/blob/master/dist/README.md#partial-bundles or roll your own
+import Plotly from 'plotly.js/dist/plotly-cartesian';
+const PlotlyComponent = createPlotlyComponent(Plotly);
 ```
 
 Here's a simple example render method:
@@ -57,20 +62,9 @@ Here's a simple example render method:
       displayModeBar: true
     };
     return (
-      <Plotly className="whatever" data={data} layout={layout} config={config}/>
+      <PlotlyComponent className="whatever" data={data} layout={layout} config={config}/>
     );
   }
 
 ```
-
-If you're using webpack and  get a "This seems to be a pre-built javascript file." warning then add this to your webpack config:
-
-```
-module: {
-    noParse: [
-      /plotly\.js/
-    ],
-  }
-```    
-
 
