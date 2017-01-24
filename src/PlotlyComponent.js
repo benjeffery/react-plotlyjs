@@ -58,6 +58,13 @@ var PlotlyComponent = React.createClass({
 
   render: function () {
     let {data, layout, config, ...other } = this.props;
+    //Remove props that would cause React to warn for unknown props.
+    delete other.onClick;
+    delete other.onBeforeHover;
+    delete other.onHover;
+    delete other.onUnHover;
+    delete other.onSelected;
+
     return <div {...other} ref={(node) => this.container=node} />
   }
 });
