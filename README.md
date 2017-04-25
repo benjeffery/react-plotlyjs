@@ -16,10 +16,9 @@ As the full Plotly bundle is huge, this library lets you pass a custom bundle to
 
 
 ```javascript
-import createPlotlyComponent from 'react-plotlyjs';
+import PlotlyComponent from 'react-plotlyjs';
 //See the list of possible plotly bundles at https://github.com/plotly/plotly.js/blob/master/dist/README.md#partial-bundles or roll your own
 import Plotly from 'plotly.js/dist/plotly-cartesian';
-const PlotlyComponent = createPlotlyComponent(Plotly);
 ```
 
 Here's a simple example render method:
@@ -63,7 +62,7 @@ Here's a simple example render method:
       displayModeBar: true
     };
     return (
-      <PlotlyComponent className="whatever" data={data} layout={layout} config={config}/>
+      <PlotlyComponent className="whatever" plotly={Plotly} data={data} layout={layout} config={config}/>
     );
   }
 ```
@@ -108,7 +107,7 @@ render() {
       ...
     };
     return (
-      <PlotlyComponent className="whatever" data={data} layout={layout} config={config} onClick={handler}/>
+      <PlotlyComponent className="whatever" plotly={Plotly} data={data} layout={layout} config={config} onClick={handler}/>
     );
   }
 ```
