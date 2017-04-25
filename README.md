@@ -12,6 +12,10 @@ This is a very early, simple wrapper with the following problems:
 However it does support event handling via the onClick, onBeforeHover, onHover, onUnHover and onSelected props.
 Note that currently, however, changes to these event handlers after initial creation will not be propogated.
 
+
+
+## Getting started
+
 As the full Plotly bundle is huge, this library lets you pass a custom bundle to create the component. Therefore you will need Plotly as a direct dependancy of your project.
 
 
@@ -69,6 +73,8 @@ Here's a simple example render method:
 
 
 
+## Event Handling
+
 To add some interaction to the graph, you can use the following handlers:
 
 - onClick(data, graphDiv)
@@ -110,5 +116,15 @@ render() {
       <PlotlyComponent className="whatever" plotly={Plotly} data={data} layout={layout} config={config} onClick={handler}/>
     );
   }
+```
+
+
+
+## Resize with window
+
+To make the plot redraw when the window size changes, you can use the `resizeWithWindow` prop.
+
+```javascript
+<PlotlyComponent className="whatever" plotly={Plotly} /*HERE-->*/resizeWithWindow data={data} layout={layout} config={config} onClick={handler}/>
 ```
 

@@ -19,6 +19,7 @@ class PlotlyComponent extends React.Component {
   componentDidMount () {
     let {data, layout, config, plotly} = this.props
     plotly.newPlot(this.container, data, cloneDeep(layout), config) // We clone the layout as plotly mutates it.
+    if (this.props.resizeWithWindow) window.addEventListener('resize', this.resize.bind(this))
     this.attachListeners()
   }
 
@@ -31,6 +32,7 @@ class PlotlyComponent extends React.Component {
   }
 
   componentWillUnmount () {
+    if (this.props.resizeWithWindow) window.removeEventListener('resize', this.resize.bind(this))
     this.props.plotly.purge(this.container)
   }
 
@@ -60,7 +62,8 @@ PlotlyComponent.propTypes = {
   onBeforeHover: PropTypes.func,
   onHover: PropTypes.func,
   onUnHover: PropTypes.func,
-  onSelected: PropTypes.func
+  onSelected: PropTypes.func,
+  resizeWithWindow: PropTypes.bool
 }
 
 export default PlotlyComponent
