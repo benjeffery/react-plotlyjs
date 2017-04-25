@@ -1,3 +1,4 @@
+
 React-PlotlyJS [![npm version](https://badge.fury.io/js/react-plotlyjs.svg)](http://badge.fury.io/js/react-plotlyjs)
 =============
 
@@ -11,14 +12,17 @@ This is a very early, simple wrapper with the following problems:
 However it does support event handling via the onClick, onBeforeHover, onHover, onUnHover and onSelected props.
 Note that currently, however, changes to these event handlers after initial creation will not be propogated.
 
+
+
+## Getting started
+
 As the full Plotly bundle is huge, this library lets you pass a custom bundle to create the component. Therefore you will need Plotly as a direct dependancy of your project.
 
 
 ```javascript
-import createPlotlyComponent from 'react-plotlyjs';
+import PlotlyComponent from 'react-plotlyjs';
 //See the list of possible plotly bundles at https://github.com/plotly/plotly.js/blob/master/dist/README.md#partial-bundles or roll your own
 import Plotly from 'plotly.js/dist/plotly-cartesian';
-const PlotlyComponent = createPlotlyComponent(Plotly);
 ```
 
 Here's a simple example render method:
@@ -62,9 +66,65 @@ Here's a simple example render method:
       displayModeBar: true
     };
     return (
-      <PlotlyComponent className="whatever" data={data} layout={layout} config={config}/>
+      <PlotlyComponent className="whatever" plotly={Plotly} data={data} layout={layout} config={config}/>
     );
   }
+```
 
+
+
+## Event Handling
+
+To add some interaction to the graph, you can use the following handlers:
+
+- onClick(data, graphDiv)
+- onBeforeHover(graphDiv)
+- onHover(data, graphDiv)
+- onUnHover(data, graphDiv)
+- onSelected(eventData, graphDiv)
+
+For more information, see https://plot.ly/javascript/plotlyjs-events/.
+
+```javascript
+
+function handler(data, graphDiv){
+  var pn='',
+      tn='',
+      colors=[];
+  for(var i=0; i < data.points.length; i++){
+    pn = data.points[i].pointNumber;
+    tn = data.points[i].curveNumber;
+    colors = data.points[i].data.marker.color;
+  };
+  colors[pn] = '#C54C82';
+
+  var update = {'marker':{color: colors, size:16}};
+  Plotly.restyle(graphDiv, update, [tn]);
+});
+
+render() {
+    let data = [
+      ...
+    ];
+    let layout = {                     
+      ...
+    };
+    let config = {
+      ...
+    };
+    return (
+      <PlotlyComponent className="whatever" plotly={Plotly} data={data} layout={layout} config={config} onClick={handler}/>
+    );
+  }
+```
+
+
+
+## Resize with window
+
+To make the plot redraw when the window size changes, you can use the `resizeWithWindow` prop.
+
+```javascript
+<PlotlyComponent className="whatever" plotly={Plotly} /*HERE-->*/resizeWithWindow data={data} layout={layout} config={config} onClick={handler}/>
 ```
 
