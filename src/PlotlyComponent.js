@@ -16,15 +16,15 @@ let createPlotlyComponent = (plotlyInstance) => React.createClass({
 
   attachListeners: function() {
     if (this.props.onClick)
-      this.container.on('plotly_click', this.props.onClick);
+      this.container.on('plotly_click', (data) => this.props.onClick(data, this.container));
     if (this.props.onBeforeHover)
-      this.container.on('plotly_beforehover', this.props.onBeforeHover);
+      this.container.on('plotly_beforehover', () => this.props.onBeforeHover(this.container));
     if (this.props.onHover)
-      this.container.on('plotly_hover', this.props.onHover);
+      this.container.on('plotly_hover', (data) => this.props.onHover(data, this.container));
     if (this.props.onUnHover)
-      this.container.on('plotly_unhover', this.props.onUnHover);
+      this.container.on('plotly_unhover', (data) => this.props.onUnHover(data, this.container));
     if (this.props.onSelected)
-      this.container.on('plotly_selected', this.props.onSelected);
+      this.container.on('plotly_selected', (eventData) => this.props.onSelected(eventData, this.container));
   },
 
   shouldComponentUpdate(nextProps) {

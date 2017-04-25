@@ -1,3 +1,4 @@
+
 React-PlotlyJS [![npm version](https://badge.fury.io/js/react-plotlyjs.svg)](http://badge.fury.io/js/react-plotlyjs)
 =============
 
@@ -65,6 +66,50 @@ Here's a simple example render method:
       <PlotlyComponent className="whatever" data={data} layout={layout} config={config}/>
     );
   }
+```
 
+
+
+To add some interaction to the graph, you can use the following handlers:
+
+- onClick(data, graphDiv)
+- onBeforeHover(graphDiv)
+- onHover(data, graphDiv)
+- onUnHover(data, graphDiv)
+- onSelected(eventData, graphDiv)
+
+For more information, see https://plot.ly/javascript/plotlyjs-events/.
+
+```javascript
+
+function handler(data, graphDiv){
+  var pn='',
+      tn='',
+      colors=[];
+  for(var i=0; i < data.points.length; i++){
+    pn = data.points[i].pointNumber;
+    tn = data.points[i].curveNumber;
+    colors = data.points[i].data.marker.color;
+  };
+  colors[pn] = '#C54C82';
+
+  var update = {'marker':{color: colors, size:16}};
+  Plotly.restyle(graphDiv, update, [tn]);
+});
+
+render() {
+    let data = [
+      ...
+    ];
+    let layout = {                     
+      ...
+    };
+    let config = {
+      ...
+    };
+    return (
+      <PlotlyComponent className="whatever" data={data} layout={layout} config={config} onClick={handler}/>
+    );
+  }
 ```
 
