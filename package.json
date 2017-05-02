@@ -1,6 +1,6 @@
 {
   "name": "react-plotlyjs",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "ReactJS / PlotlyJS integration. Draw plotly graphs in your react app.",
   "main": "lib/PlotlyComponent.js",
   "author": "Ben Jeffery",
