@@ -40,8 +40,9 @@ let createPlotlyComponent = (plotlyInstance) => React.createClass({
 
   componentDidUpdate(prevProps) {
     //TODO use minimal update for given changes
-    if (prevProps.data !== this.props.data || prevProps.layout !== this.props.layout) {
-      plotlyInstance.newPlot(this.container, this.props.data, this.props.layout);
+    if (prevProps.data !== this.props.data || prevProps.layout !== this.props.layout || prevProps.config !== this.props.config) {
+      let {data, layout, config} = this.props;
+      plotlyInstance.newPlot(this.container, data, cloneDeep(layout), config); //We clone the layout as plotly mutates it.
       this.attachListeners();
     }
   },
