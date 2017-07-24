@@ -2,9 +2,9 @@ import PropTypes from 'prop-types';
 import React  from 'react';
 import cloneDeep from 'lodash.clonedeep';
 
-let createPlotlyComponent = (plotlyInstance) => React.createClass({
-  displayName: 'Plotly',
-  propTypes: {
+let createPlotlyComponent = (plotlyInstance) => class Plotly extends React.Component {
+
+  static propTypes = {
     data: PropTypes.array,
     layout: PropTypes.object,
     config: PropTypes.object,
@@ -13,9 +13,9 @@ let createPlotlyComponent = (plotlyInstance) => React.createClass({
     onHover: PropTypes.func,
     onUnHover: PropTypes.func,
     onSelected: PropTypes.func
-  },
+  };
 
-  attachListeners: function() {
+  attachListeners() {
     if (this.props.onClick)
       this.container.on('plotly_click', this.props.onClick);
     if (this.props.onBeforeHover)
@@ -26,18 +26,18 @@ let createPlotlyComponent = (plotlyInstance) => React.createClass({
       this.container.on('plotly_unhover', this.props.onUnHover);
     if (this.props.onSelected)
       this.container.on('plotly_selected', this.props.onSelected);
-  },
+  }
 
   shouldComponentUpdate(nextProps) {
     //TODO logic for detecting change in props
     return true;
-  },
+  }
 
   componentDidMount() {
     let {data, layout, config} = this.props;
     plotlyInstance.newPlot(this.container, data, cloneDeep(layout), config); //We clone the layout as plotly mutates it.
     this.attachListeners();
-  },
+  }
 
   componentDidUpdate(prevProps) {
     //TODO use minimal update for given changes
@@ -46,17 +46,17 @@ let createPlotlyComponent = (plotlyInstance) => React.createClass({
       plotlyInstance.newPlot(this.container, data, cloneDeep(layout), config); //We clone the layout as plotly mutates it.
       this.attachListeners();
     }
-  },
+  }
 
-  componentWillUnmount: function() {
+  componentWillUnmount() {
     plotlyInstance.purge(this.container);
-  },
+  }
 
-  resize: function() {
+  resize() {
     plotlyInstance.Plots.resize(this.container);
-  },
+  }
 
-  render: function () {
+  render() {
     let {data, layout, config, ...other } = this.props;
     //Remove props that would cause React to warn for unknown props.
     delete other.onClick;
@@ -67,6 +67,6 @@ let createPlotlyComponent = (plotlyInstance) => React.createClass({
 
     return <div {...other} ref={(node) => this.container=node} />
   }
-});
+};
 
 export default createPlotlyComponent;
