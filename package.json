@@ -1,6 +1,6 @@
 {
   "name": "react-plotlyjs",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "ReactJS / PlotlyJS integration. Draw plotly graphs in your react app.",
   "main": "lib/PlotlyComponent.js",
   "author": "Ben Jeffery",
@@ -24,7 +24,7 @@
     "gulp-util": "^3.0.8"
   },
   "peerDependencies": {
-    "react": "^15.0.0"
+    "react": "^15.0.0||^16.0.0"
   },
   "browserify-shim": {
     "react": "global:React"
