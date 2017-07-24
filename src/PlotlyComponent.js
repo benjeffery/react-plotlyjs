@@ -1,17 +1,18 @@
+import PropTypes from 'prop-types';
 import React  from 'react';
 import cloneDeep from 'lodash.clonedeep';
 
 let createPlotlyComponent = (plotlyInstance) => React.createClass({
   displayName: 'Plotly',
   propTypes: {
-    data: React.PropTypes.array,
-    layout: React.PropTypes.object,
-    config: React.PropTypes.object,
-    onClick: React.PropTypes.func,
-    onBeforeHover: React.PropTypes.func,
-    onHover: React.PropTypes.func,
-    onUnHover: React.PropTypes.func,
-    onSelected: React.PropTypes.func
+    data: PropTypes.array,
+    layout: PropTypes.object,
+    config: PropTypes.object,
+    onClick: PropTypes.func,
+    onBeforeHover: PropTypes.func,
+    onHover: PropTypes.func,
+    onUnHover: PropTypes.func,
+    onSelected: PropTypes.func
   },
 
   attachListeners: function() {
