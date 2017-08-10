@@ -34,7 +34,7 @@ let createPlotlyComponent = (plotlyInstance) => React.createClass({
 
   componentDidMount() {
     let {data, layout, config} = this.props;
-    plotlyInstance.newPlot(this.container, data, cloneDeep(layout), config); //We clone the layout as plotly mutates it.
+    plotlyInstance.newPlot(this.container, cloneDeep(data), cloneDeep(layout), config); //We clone the data and layout as plotly mutates them.
     this.attachListeners();
   },
 
@@ -42,7 +42,7 @@ let createPlotlyComponent = (plotlyInstance) => React.createClass({
     //TODO use minimal update for given changes
     if (prevProps.data !== this.props.data || prevProps.layout !== this.props.layout || prevProps.config !== this.props.config) {
       let {data, layout, config} = this.props;
-      plotlyInstance.newPlot(this.container, data, cloneDeep(layout), config); //We clone the layout as plotly mutates it.
+      plotlyInstance.newPlot(this.container, cloneDeep(data), cloneDeep(layout), config); //We clone the data and layout as plotly mutates them.
       this.attachListeners();
     }
   },
