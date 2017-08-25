@@ -11,7 +11,8 @@
   },
   "dependencies": {
     "lodash.clonedeep": "^4.5.0",
-    "prop-types": "^15.5.10"
+    "prop-types": "^15.5.10",
+    "react": "^15.6.1"
   },
   "devDependencies": {
     "babel-cli": "^6.22.2",
@@ -20,7 +21,7 @@
     "babel-preset-stage-1": "^6.22.0",
     "gulp": "^3.9.1",
     "gulp-bump": "^2.5.1",
-    "gulp-git": "^1.12.0",
+    "gulp-git": "^2.4.2",
     "gulp-util": "^3.0.8"
   },
   "peerDependencies": {
@@ -30,7 +31,7 @@
     "react": "global:React"
   },
   "scripts": {
-    "prepublish": "npm run compile",
+    "prepare": "npm run compile",
     "compile": "babel --presets es2015,stage-1,react -d lib/ src/",
     "bump": "gulp bump",
     "bump:minor": "gulp bump:minor",
