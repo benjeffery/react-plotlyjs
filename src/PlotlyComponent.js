@@ -12,7 +12,8 @@ let createPlotlyComponent = (plotlyInstance) => class Plotly extends React.Compo
     onBeforeHover: PropTypes.func,
     onHover: PropTypes.func,
     onUnHover: PropTypes.func,
-    onSelected: PropTypes.func
+    onSelected: PropTypes.func,
+    onRelayout: PropTypes.func,
   };
 
   attachListeners() {
@@ -26,6 +27,9 @@ let createPlotlyComponent = (plotlyInstance) => class Plotly extends React.Compo
       this.container.on('plotly_unhover', this.props.onUnHover);
     if (this.props.onSelected)
       this.container.on('plotly_selected', this.props.onSelected);
+    if (this.props.onRelayout) {
+      this.container.on('plotly_relayout', this.props.onRelayout);
+    }
   }
 
   shouldComponentUpdate(nextProps) {
@@ -64,6 +68,7 @@ let createPlotlyComponent = (plotlyInstance) => class Plotly extends React.Compo
     delete other.onHover;
     delete other.onUnHover;
     delete other.onSelected;
+    delete other.onRelayout;
 
     return <div {...other} ref={(node) => this.container=node} />
   }

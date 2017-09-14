@@ -5,10 +5,10 @@ React-PlotlyJS [![npm version](https://badge.fury.io/js/react-plotlyjs.svg)](htt
 A react component for Plotly.JS graphs.
 
 This is a very early, simple wrapper with the following problems:
-* Performs a full redraw on every update, I intend to make this more performant soon. 
+* Performs a full redraw on every update, I intend to make this more performant soon.
 * Changes to the 'config' prop will not update the graph currently.
 
-However it does support event handling via the onClick, onBeforeHover, onHover, onUnHover and onSelected props.
+However it does support event handling via the onClick, onBeforeHover, onHover, onUnHover, onSelected, and onRelayout props.
 Note that currently, however, changes to these event handlers after initial creation will not be propogated.
 
 As the full Plotly bundle is huge, this library lets you pass a custom bundle to create the component. Therefore you will need Plotly as a direct dependancy of your project.
@@ -67,4 +67,3 @@ Here's a simple example render method:
   }
 
 ```
-
